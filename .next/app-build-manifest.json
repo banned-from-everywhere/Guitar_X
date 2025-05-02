@@ -12,12 +12,6 @@
       "static/css/app/page.css",
       "static/chunks/app/page.js"
     ],
-    "/progress/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/progress/page.css",
-      "static/chunks/app/progress/page.js"
-    ],
     "/chords/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -41,6 +35,12 @@
       "static/chunks/main-app.js",
       "static/css/app/tips/page.css",
       "static/chunks/app/tips/page.js"
+    ],
+    "/progress/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/progress/page.css",
+      "static/chunks/app/progress/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",

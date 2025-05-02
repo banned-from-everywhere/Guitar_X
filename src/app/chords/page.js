@@ -16,7 +16,7 @@ import styles from "./chords.module.css";
 
 const Header = () => (
   <header className={styles.header}>
-    <h1 className={styles.logo}>GuitarX🎸</h1>
+    <h1 className={styles.logo}>GuitarX</h1>
     <nav className={styles.nav}>
       <Link href="/">
         <Home size={18} /> Home
