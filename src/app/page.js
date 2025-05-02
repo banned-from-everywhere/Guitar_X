@@ -1,106 +1,181 @@
 "use client";
 
-import React from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { Home, Music, Video, PlayCircle, Lightbulb, BarChart3 } from "lucide-react";
-import "./Home.css"; 
-import "../components/header"
-import "../components/footer"
+import {
+  Guitar,
+  Music,
+  Video,
+  BookOpen,
+  Trophy,
+  Star,
+  ArrowRight,
+  PlayCircle,
+  Bookmark,
+  Clock,
+  ChevronRight,
+} from "lucide-react";
+import Layout from "@/components/Layout";
+import styles from "./page.module.css";
 
-const Header = () => (
-  <header className="header">
-    <h1 className="logo">GuitarX🎸</h1>
-    <nav className="nav">
-      <Link href="/">
-        <Home size={18} /> Home
-      </Link>
-      <Link href="/chords">
-        <Music size={18} /> Chords
-      </Link>
-      <Link href="/videos">
-        <Video size={18} /> Videos
-      </Link>
-      <Link href="/practice">
-        <PlayCircle size={18} /> Practice
-      </Link>
-      <Link href="/tips">
-        <Lightbulb size={18} /> Tips
-      </Link>
-      <Link href="/progress">
-        <BarChart3 size={18} /> Progress
-      </Link>
-    </nav>
-  </header>
-);
+export default function HomePage() {
+  const [activeFilter, setActiveFilter] = useState("all");
 
+  const features = [
+    {
+      icon: <Guitar size={24} />,
+      title: "Interactive Chord Library",
+      description:
+        "Learn and practice hundreds of guitar chords with interactive diagrams and audio examples.",
+    },
+    {
+      icon: <Video size={24} />,
+      title: "Video Lessons",
+      description:
+        "Step-by-step video tutorials for all skill levels, from beginner to advanced techniques.",
+    },
+    {
+      icon: <Music size={24} />,
+      title: "Practice Exercises",
+      description:
+        "Structured practice routines to improve your skills and track your progress.",
+    },
+    {
+      icon: <BookOpen size={24} />,
+      title: "Learning Resources",
+      description:
+        "Comprehensive guides, tips, and tricks to help you master the guitar.",
+    },
+  ];
 
-const Footer = () => (
-  <footer className="footer">
-    <div className="footer-content">
-      <p>
-        🎶 Keep strumming, keep growing! 🎶
-      </p>
-      <nav className="footer-nav">
-        <Link href="/about">About</Link> | 
-        <Link href="/contact">Contact</Link> | 
-        <Link href="/privacy">Privacy</Link>
-      </nav>
-      <p>
-        &copy; {new Date().getFullYear()} GuitarTut. All rights reserved.
-      </p>
-    </div>
-  </footer>
-);
+  const testimonials = [
+    {
+      text: "GuitarX has completely transformed my learning journey. The interactive lessons and progress tracking keep me motivated!",
+      author: "Sarah M.",
+      role: "Beginner Guitarist",
+    },
+    {
+      text: "As a music teacher, I recommend GuitarX to all my students. The structured approach and quality content are unmatched.",
+      author: "David R.",
+      role: "Music Teacher",
+    },
+    {
+      text: "The chord library and practice exercises have helped me improve faster than I ever thought possible.",
+      author: "Michael T.",
+      role: "Intermediate Player",
+    },
+  ];
 
-const HomePage = () => {
+  const latestContent = [
+    {
+      title: "Beginner Chord Progressions",
+      description: "Learn essential chord progressions for beginners",
+      type: "chord",
+      duration: "15 min",
+      icon: <Guitar size={24} />,
+    },
+    {
+      title: "Fingerstyle Basics",
+      description: "Master the fundamentals of fingerstyle playing",
+      type: "video",
+      duration: "20 min",
+      icon: <Video size={24} />,
+    },
+    {
+      title: "Practice Routine Guide",
+      description: "Create an effective daily practice routine",
+      type: "practice",
+      duration: "10 min",
+      icon: <Music size={24} />,
+    },
+  ];
+
   return (
-    <div className="container">
-      <Header />
-
-      <main className="main-content">
-        <h2>Welcome to GuitarX 🎶</h2>
+    <Layout>
+      <section className={styles.hero}>
+        <h1>Master the Guitar with GuitarX</h1>
         <p>
-          An interactive app for intermediate guitar players to learn new chords,
-          master techniques, and track progress. Get mentored virtually and level
-          up your skills.
+          Your comprehensive platform for learning guitar, from basic chords to
+          advanced techniques.
         </p>
-        <Link href="/chords" className="btn">
-          🎸 Explore Chords Now
+        <div className={styles.heroButtons}>
+          <Link href="/chords" className={styles.heroButton}>
+            <Guitar size={20} />
+            Start Learning
+            <ChevronRight size={20} />
+          </Link>
+          <Link href="/practice" className={styles.heroButton}>
+            <PlayCircle size={20} />
+            Watch Tutorials
+            <ChevronRight size={20} />
+          </Link>
+        </div>
+      </section>
+
+      <section className={styles.features}>
+        {features.map((feature, index) => (
+          <div key={index} className={styles.featureCard}>
+            <div className={styles.featureIcon}>{feature.icon}</div>
+            <h3>{feature.title}</h3>
+            <p>{feature.description}</p>
+          </div>
+        ))}
+      </section>
+
+      <section className={styles.testimonials}>
+        <h2>What Our Users Say</h2>
+        <div className={styles.testimonialGrid}>
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className={styles.testimonialCard}>
+              <div className={styles.testimonialIcon}>
+                <Star size={24} />
+              </div>
+              <p className={styles.testimonialText}>{testimonial.text}</p>
+              <div className={styles.testimonialAuthor}>
+                {testimonial.author}
+                <span>{testimonial.role}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.cta}>
+        <h2>Ready to Start Your Guitar Journey?</h2>
+        <p>
+          Join thousands of guitarists who have improved their skills with
+          GuitarX.
+        </p>
+        <Link href="/chords" className={styles.ctaButton}>
+          Get Started
+          <ChevronRight size={20} />
         </Link>
+      </section>
 
-        <section className="featured-section">
-          <h3>🎥 Featured Video</h3>
-          <iframe
-            width="300"
-            height="170"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            title="Featured Guitar Tutorial"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </section>
-
-        <section className="testimonial-section">
-          <h3>⭐ What Players Are Saying</h3>
-          <p>
-            "GuitarTut helped me finally nail bar chords and improve my fingerstyle
-            technique! Highly recommended." — Alex R.
-          </p>
-        </section>
-
-        <section className="tip-section">
-          <h3>💡 Tip of the Day</h3>
-          <p>
-            Struggling with clean chord changes? Practice slow transitions between
-            just two chords for 5 minutes daily.
-          </p>
-        </section>
-      </main>
-
-      <Footer />
-    </div>
+      <section className={styles.latestContent}>
+        <h2>Latest Content</h2>
+        <div className={styles.contentGrid}>
+          {latestContent.map((content, index) => (
+            <div key={index} className={styles.contentCard}>
+              <div className={styles.contentThumbnail}>{content.icon}</div>
+              <div className={styles.contentInfo}>
+                <h3>{content.title}</h3>
+                <p>{content.description}</p>
+                <div className={styles.contentMeta}>
+                  <span>
+                    <Bookmark size={16} />
+                    {content.type}
+                  </span>
+                  <span>
+                    <Clock size={16} />
+                    {content.duration}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </Layout>
   );
-};
-
-export default HomePage;
+}
