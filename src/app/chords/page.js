@@ -91,9 +91,9 @@ const ChordsPage = () => {
     {
       name: "C Major",
       positions: [
-        { string: 2, fret: 1, finger: 1 },
-        { string: 4, fret: 2, finger: 2 },
-        { string: 5, fret: 3, finger: 3 },
+        { string: 6, fret: 1, finger: 1 },
+        { string: 3, fret: 3, finger: 2 },
+        { string: 2, fret: 4, finger: 3 },
       ],
       difficulty: "Beginner",
       category: "Open Chords",
@@ -121,14 +121,15 @@ const ChordsPage = () => {
     {
       name: "F Major",
       positions: [
-        { string: 1, fret: 1, finger: 1 },
-        { string: 2, fret: 1, finger: 1 },
-        { string: 3, fret: 2, finger: 2 },
-        { string: 4, fret: 3, finger: 3 },
+        { string: 4, fret: 1, finger: 1 },
+        { string: 5, fret: 1, finger: 1 },
+        { string: 3, fret: 3, finger: 2 },
+        { string: 1, fret: 5, finger: 3 },
       ],
       difficulty: "Intermediate",
       category: "Barre Chords",
     },
+    
   ];
 
   const categories = ["all", "Open Chords", "Barre Chords", "Power Chords"];
